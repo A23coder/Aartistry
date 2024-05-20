@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
+    <item
+        android:id="@+id/privacy"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="Privacy Policy" />
+
+    <item
+        android:id="@+id/shareApp"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Share App" />
+
+    <item
+        android:id="@+id/rateUs"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Rate Us" />
+
+</menu>
