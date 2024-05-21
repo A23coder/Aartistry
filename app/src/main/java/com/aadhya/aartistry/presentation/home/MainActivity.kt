@@ -1,5 +1,6 @@
 package com.aadhya.aartistry.presentation.home
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -15,15 +16,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        navigationDrawer()
+
+    }
+
+    private fun navigationDrawer() {
         actionBarDrawerToggle = ActionBarDrawerToggle(
-            this , binding.myDrawerLayout  , R.string.nav_open , R.string.nav_close
+            this , binding.myDrawerLayout , R.string.nav_open , R.string.nav_close
         )
         setSupportActionBar(binding.toolbar)
 
         binding.myDrawerLayout.addDrawerListener(actionBarDrawerToggle)
-
+        binding.navigationDrawer.setBackgroundColor(Color.LTGRAY)
         actionBarDrawerToggle.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

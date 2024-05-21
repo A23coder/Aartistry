@@ -7,6 +7,7 @@ import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.aadhya.aartistry.R
+import com.aadhya.aartistry.presentation.auth.Authentication
 import com.aadhya.aartistry.presentation.home.MainActivity
 
 class Splash : AppCompatActivity() {
@@ -19,7 +20,7 @@ class Splash : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this@Splash , MainActivity::class.java)
+            val intent = Intent(this@Splash , Authentication::class.java)
             startActivity(intent)
             finish()
         } , 2000)
