@@ -56,7 +56,7 @@ dependencies {
     implementation(libs.material.v130alpha03)
     implementation(libs.firebase.bom)
 
-    implementation ("com.github.appsfeature:otp-view:1.1")
+    implementation("com.github.appsfeature:otp-view:1.1")
 
 //    implementation("com.google.firebase:firebase-auth:23.0.0")
     implementation("com.google.firebase:firebase-database:21.0.0")
@@ -64,4 +64,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-analytics")
+
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+
 }
