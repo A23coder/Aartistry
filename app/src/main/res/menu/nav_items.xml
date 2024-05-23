@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
+    <item
+        android:id="@+id/privacy"
+        android:icon="@drawable/file"
+        android:title="Privacy Policy"
+        android:titleTextAppearance="@style/NavigationDrawerTextAppearance"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/shareApp"
+        android:icon="@drawable/link"
+        android:title="Share App"
+        android:titleTextAppearance="@style/NavigationDrawerTextAppearance"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/rateUs"
+        android:icon="@drawable/star"
+        android:title="Rate Us"
+        android:titleTextAppearance="@style/NavigationDrawerTextAppearance"
+        app:showAsAction="always" />
+
+</menu>
