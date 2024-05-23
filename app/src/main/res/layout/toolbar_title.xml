@@ -3,7 +3,7 @@
     android:id="@+id/toolbar_title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    android:text="Aadhya Artistry"
+    android:gravity="start"
+    android:text="@string/aadhya_artistry"
     android:textColor="@color/black"
     android:textSize="22sp" />

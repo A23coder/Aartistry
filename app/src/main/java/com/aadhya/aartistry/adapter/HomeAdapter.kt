@@ -1,6 +1,7 @@
 package com.aadhya.aartistry.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.aadhya.aartistry.R
 import com.aadhya.aartistry.data.modal.HomeData
+import com.aadhya.aartistry.presentation.categories.Subcategory
 import com.bumptech.glide.Glide
 
 class HomeAdapter(
@@ -41,9 +43,15 @@ class HomeAdapter(
             Toast.makeText(context , item.title , Toast.LENGTH_SHORT).show()
         }
         holder.cardText.text = item.title
-        Glide.with(holder.itemView.context)
+        Glide.with(holder.itemView)
             .load(item.image)
-            .override(600 , 400) // Resize the image to fit within 600x400 pixels
+            .override(600 , 400)
             .into(holder.cardImage)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context , Subcategory::class.java).apply {
+                putExtra("category" , holder.cardText.text)
+            }
+            context.startActivity(intent)
+        }
     }
 }

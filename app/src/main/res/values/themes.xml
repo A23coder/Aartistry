@@ -10,6 +10,8 @@
         <item name="android:textSize">18sp</item> <!-- Adjust text size -->
         <item name="android:textColor">@color/black</item> <!-- Adjust text color if needed -->
     </style>
-
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
     <style name="Theme.HomeActivity" parent="Base.Theme.HomeActivity" />
 </resources>
