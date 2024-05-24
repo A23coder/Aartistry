@@ -16,6 +16,9 @@
         android:theme="@style/Theme.HomeActivity"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.subcategory.SubCat"
+            android:exported="false" />
+        <activity
             android:name=".presentation.categories.Subcategory"
             android:exported="false" />
         <activity
