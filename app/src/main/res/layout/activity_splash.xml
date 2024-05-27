@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/f1"
         android:padding="10dp"
-        android:text="Aaradhya"
+        android:text="Aadhya"
         android:textColor="#3C3C3C"
         android:textSize="45sp"
         android:textStyle="bold"
