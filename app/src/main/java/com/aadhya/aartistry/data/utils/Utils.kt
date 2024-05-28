@@ -6,6 +6,7 @@ import com.aadhya.aartistry.data.modal.HomeData
 class Utils {
     companion object {
         val mainCategory = listOf(
+            "Select Category",
             "Mehandi Design" ,
             "Mehandi Video" ,
             "NailArt Design" ,
@@ -17,6 +18,7 @@ class Utils {
         )
 
         val subCategory = listOf(
+            "Select Subcategory",
             "Arabic mehndi design" ,
             "Bridal  mehndi design" ,
             "Indian  mehndi design" ,

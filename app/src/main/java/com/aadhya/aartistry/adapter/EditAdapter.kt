@@ -2,6 +2,7 @@ package com.aadhya.aartistry.adapter
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +13,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.aadhya.aartistry.R
 import com.aadhya.aartistry.data.modal.HomeData
+import com.aadhya.aartistry.presentation.edit.EditPage
 import com.bumptech.glide.Glide
 
 
 class EditAdapter(
     private var data: List<HomeData> ,
     var context: Context ,
+    var subCategory: String ,
+    var category: String ,
 ) : RecyclerView.Adapter<EditAdapter.MyViewViewHolder>() {
     class MyViewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cardImage: ImageView = itemView.findViewById(R.id.catImage)
@@ -41,8 +45,16 @@ class EditAdapter(
             .load(item.image)
             .into(holder.cardImage)
 
-        holder.cateEdit.setOnClickListener {
 
+
+        holder.cateEdit.setOnClickListener {
+            val intent = Intent(context , EditPage::class.java).apply {
+                putExtra("name" , item.title)
+                putExtra("image" , item.image)
+                putExtra("subCategory" , subCategory)
+                putExtra("category" , category)
+            }
+            context.startActivity(intent)
         }
         holder.cateDelete.setOnClickListener {
             val builder = AlertDialog.Builder(context)
@@ -63,12 +75,12 @@ class EditAdapter(
             val alertDialog = builder.create()
             alertDialog.show()
         }
-        holder.itemView.setOnClickListener {
-//            val intent = Intent(context , Subcategory::class.java).apply {
+//        holder.itemView.setOnClickListener {
+//            val intent = Intent(context , EditPage::class.java).apply {
 //                  putExtra("category" , holder.cardText.text)
 //            }
 //            context.startActivity(intent)
-        }
+//        }
     }
 
     override fun getItemCount(): Int {
