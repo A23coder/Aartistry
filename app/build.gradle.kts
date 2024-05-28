@@ -60,6 +60,8 @@ dependencies {
 
 //    implementation("com.google.firebase:firebase-auth:23.0.0")
     implementation("com.google.firebase:firebase-database:21.0.0")
+    implementation("com.google.firebase:firebase-storage:20.0.1")
+
 //    implementation("com.google.firebase:firebase-bom:32.1.1")
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-auth")
@@ -69,4 +71,6 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation("com.google.android.material:material:1.2.0")
+
+
 }

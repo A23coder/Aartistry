@@ -8,6 +8,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.aadhya.aartistry.R
+import com.aadhya.aartistry.presentation.admin.upload.UploadImageActivity
 import com.aadhya.aartistry.presentation.home.MainActivity
 
 class Splash : AppCompatActivity() {
@@ -26,7 +27,8 @@ class Splash : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this@Splash , MainActivity::class.java)
+//            val intent = Intent(this@Splash , MainActivity::class.java)
+            val intent = Intent(this@Splash , UploadImageActivity::class.java)
             startActivity(intent)
             finish()
         } , 2000)
