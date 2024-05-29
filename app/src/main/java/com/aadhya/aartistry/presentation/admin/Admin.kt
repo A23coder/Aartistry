@@ -22,8 +22,6 @@ class Admin : AppCompatActivity() {
         setupViewPager(binding.tabViewpager)
         binding.tabTablayout.setupWithViewPager(binding.tabViewpager)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
-
     }
 
     private fun setupViewPager(tabViewpager: ViewPager) {
