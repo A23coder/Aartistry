@@ -51,17 +51,13 @@ class AddFrag : Fragment() {
                 id: Long ,
             ) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
-                if (selectedItem == "Select Category") {
-                    selectedCategory = ""
-                } else {
-                    selectedCategory = selectedItem
-                }
-
+                selectedCategory = if (selectedItem == "Select Category") "" else selectedItem
+                updateSubCategorySpinner()
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
+
         _binding.subCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*> ,
@@ -70,22 +66,14 @@ class AddFrag : Fragment() {
                 id: Long ,
             ) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
-                if (selectedItem == "Select Subcategory") {
-                    selectedSubCategory = ""
-                } else {
-                    selectedSubCategory = selectedItem
-//                    Toast.makeText(requireContext() , selectedSubCategory , Toast.LENGTH_SHORT)
-//                        .show()
-                }
-
+                selectedSubCategory = if (selectedItem == "Select Subcategory") "" else selectedItem
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+
         }
-
         _binding.btnUpload.setOnClickListener {
-            if (_binding.imgAddView.drawable != null && selectedCategory.isEmpty() && selectedSubCategory.isEmpty()) {
+            if (_binding.imgAddView.drawable != null && selectedCategory.isEmpty()) {
                 checkImage()
             } else {
                 checkCondition()
@@ -94,7 +82,29 @@ class AddFrag : Fragment() {
 
     }
 
+    private fun updateSubCategorySpinner() {
+        if (selectedCategory == "Mehandi Design") {
+            val subCateAdapter = ArrayAdapter(
+                requireContext() ,
+                android.R.layout.simple_spinner_dropdown_item ,
+                Utils.subCategory
+            )
+            _binding.subCategory.adapter = subCateAdapter
+            _binding.subCategory.visibility = View.VISIBLE
+            _binding.subCategory.isEnabled = true
+        } else {
+            _binding.subCategory.visibility = View.GONE
+            _binding.subCategory.adapter = null
+            _binding.subCategory.isEnabled = false
+        }
+    }
+
     private fun checkCondition() {
+        if (selectedCategory == "Mehandi Design") {
+            Toast.makeText(
+                requireContext() , "Please Select SubCategory" , Toast.LENGTH_SHORT
+            ).show()
+        }
         when {
             _binding.imgAddView.drawable == null -> {
                 checkImage()
@@ -103,12 +113,6 @@ class AddFrag : Fragment() {
             selectedCategory.isEmpty() -> {
                 Toast.makeText(
                     requireContext() , "Please Select Category" , Toast.LENGTH_SHORT
-                ).show()
-            }
-
-            selectedSubCategory.isEmpty() -> {
-                Toast.makeText(
-                    requireContext() , "Please Select SubCategory" , Toast.LENGTH_SHORT
                 ).show()
             }
 
@@ -137,7 +141,7 @@ class AddFrag : Fragment() {
     }
 
     private fun addData() {
-        if (_binding.edtName.text.isEmpty() && selectedSubCategory.isEmpty() && selectedSubCategory.isEmpty()) {
+        if (_binding.edtName.text.isEmpty() && selectedSubCategory.isEmpty()) {
             checkCondition()
         } else {
             val category = selectedCategory
@@ -151,14 +155,10 @@ class AddFrag : Fragment() {
     }
 
     private fun getSpinnerAdapter() {
-        val subCateAdapter = ArrayAdapter(
-            requireContext() , android.R.layout.simple_spinner_dropdown_item , Utils.subCategory
-        )
-        _binding.subCategory.adapter = subCateAdapter
-        _binding.subCategory.isEnabled = true
-
         val mainCateAdapter = ArrayAdapter(
-            requireContext() , android.R.layout.simple_spinner_dropdown_item , Utils.mainCategory
+            requireContext() ,
+            android.R.layout.simple_spinner_dropdown_item ,
+            Utils.mainCategory
         )
         _binding.mainCategory.adapter = mainCateAdapter
         _binding.mainCategory.isEnabled = true
