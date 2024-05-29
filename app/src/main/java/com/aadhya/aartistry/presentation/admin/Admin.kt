@@ -2,6 +2,7 @@ package com.aadhya.aartistry.presentation.admin
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -20,6 +21,7 @@ class Admin : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         setupViewPager(binding.tabViewpager)
         binding.tabTablayout.setupWithViewPager(binding.tabViewpager)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
 
     }

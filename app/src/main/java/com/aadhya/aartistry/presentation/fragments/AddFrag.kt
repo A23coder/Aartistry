@@ -1,10 +1,12 @@
 package com.aadhya.aartistry.presentation.fragments
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,24 +15,24 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
+import com.aadhya.aartistry.R
 import com.aadhya.aartistry.data.utils.Utils
 import com.aadhya.aartistry.databinding.LayoutAddFragmentBinding
 
 class AddFrag : Fragment() {
     private lateinit var _binding: LayoutAddFragmentBinding
-
-    //    private val GALLERY_REQUEST_CODE = 1000
     private val GALLERY_REQUEST_CODE = 123
     private val PERMISSION_REQUEST_CODE = 456
     var selectedCategory = ""
     var selectedSubCategory = ""
+    private lateinit var imgUri: String
 
     override fun onViewCreated(view: View , savedInstanceState: Bundle?) {
         super.onViewCreated(view , savedInstanceState)
-
-
         init()
+        imgUri = ""
     }
 
     private fun init() {
@@ -39,6 +41,7 @@ class AddFrag : Fragment() {
 
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun initListners() {
         _binding.mainCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -82,56 +85,69 @@ class AddFrag : Fragment() {
         }
 
         _binding.btnUpload.setOnClickListener {
-//            if (_binding.imgAddView.drawable == null) {
-//                Toast.makeText(requireContext() , "Please Select image" , Toast.LENGTH_SHORT).show()
-//            } else {
-//                if (selectedCategory.isEmpty()) {
-//                    Toast.makeText(requireContext() , "Please Select Category" , Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//                if (selectedSubCategory.isEmpty()) {
-//                    Toast.makeText(
-//                        requireContext() ,
-//                        "Please Select SubCategory" ,
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//                if (_binding.edtName.text.isEmpty()) {
-//                    Toast.makeText(requireContext() , "Please Enter Name" , Toast.LENGTH_SHORT)
-//                        .show()
-//                } else {
-//                    Toast.makeText(requireContext() , "Success" , Toast.LENGTH_SHORT).show()
-//                }
-//
-//            }
-            when {
-                _binding.imgAddView.drawable == null -> {
-                    Toast.makeText(requireContext() , "Please Select image" , Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-                selectedCategory.isEmpty() -> {
-                    Toast.makeText(requireContext() , "Please Select Category" , Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-                selectedSubCategory.isEmpty() -> {
-                    Toast.makeText(
-                        requireContext() , "Please Select SubCategory" , Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                _binding.edtName.text.isEmpty() -> {
-                    Toast.makeText(requireContext() , "Please Enter Name" , Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-                else -> {
-                    Toast.makeText(requireContext() , "Success" , Toast.LENGTH_SHORT).show()
-                }
+            if (_binding.imgAddView.drawable != null && selectedCategory.isEmpty() && selectedSubCategory.isEmpty()) {
+                checkImage()
+            } else {
+                checkCondition()
             }
         }
 
+    }
+
+    private fun checkCondition() {
+        when {
+            _binding.imgAddView.drawable == null -> {
+                checkImage()
+            }
+
+            selectedCategory.isEmpty() -> {
+                Toast.makeText(
+                    requireContext() , "Please Select Category" , Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            selectedSubCategory.isEmpty() -> {
+                Toast.makeText(
+                    requireContext() , "Please Select SubCategory" , Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            _binding.edtName.text.isEmpty() -> {
+                Toast.makeText(requireContext() , "Please Enter Name" , Toast.LENGTH_SHORT).show()
+            }
+
+            else -> {
+                addData()
+            }
+        }
+    }
+
+    private fun checkImage() {
+        val expectedDrawable = resources.getDrawable(R.drawable.ic_upload , null)
+        val currentDrawable = _binding.imgAddView.drawable
+
+        val bitmap1 = expectedDrawable.toBitmap()
+        val bitmap2 = currentDrawable.toBitmap()
+        var isSame = bitmap1.sameAs(bitmap2)
+
+        if (isSame) Toast.makeText(
+            requireContext() , "Choose Image" , Toast.LENGTH_SHORT
+        ).show()
+        else checkCondition()
+    }
+
+    private fun addData() {
+        if (_binding.edtName.text.isEmpty() && selectedSubCategory.isEmpty() && selectedSubCategory.isEmpty()) {
+            checkCondition()
+        } else {
+            val category = selectedCategory
+            val subcategory = selectedSubCategory
+            val name = _binding.edtName.text
+            val imgView = imgUri
+            Log.d("DATA" , "$category $subcategory $name $imgView")
+            Toast.makeText(requireContext() , "Done" , Toast.LENGTH_SHORT).show()
+            _binding.edtName.text.clear()
+        }
     }
 
     private fun getSpinnerAdapter() {
@@ -154,8 +170,7 @@ class AddFrag : Fragment() {
         _binding = LayoutAddFragmentBinding.inflate(inflater , container , false)
         _binding.btnAddImage.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
-                    requireContext() ,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
+                    requireContext() , Manifest.permission.READ_EXTERNAL_STORAGE
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 ActivityCompat.requestPermissions(
@@ -181,7 +196,9 @@ class AddFrag : Fragment() {
     override fun onActivityResult(requestCode: Int , resultCode: Int , data: Intent?) {
         super.onActivityResult(requestCode , resultCode , data)
         if (resultCode == Activity.RESULT_OK && requestCode == GALLERY_REQUEST_CODE) {
+            imgUri = data?.data.toString()
             _binding.imgAddView.setImageURI(data?.data)
+            addData()
         }
     }
 
@@ -200,5 +217,4 @@ class AddFrag : Fragment() {
             }
         }
     }
-
 }
