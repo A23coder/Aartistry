@@ -6,40 +6,36 @@ import com.aadhya.aartistry.data.modal.HomeData
 class Utils {
     companion object {
         val mainCategory = listOf(
-            "Select Category",
+            "Select Category" ,
             "Mehandi Design" ,
-            "Mehandi Video" ,
             "NailArt Design" ,
-            "NailArt Video" ,
             "HairStyle Design" ,
-            "HairStyle Video" ,
             "Makeup Design" ,
-            "Makeup Video" ,
         )
 
         val subCategory = listOf(
-            "Select Subcategory",
-            "Arabic mehndi design" ,
-            "Bridal  mehndi design" ,
-            "Indian  mehndi design" ,
-            "Moroccan  mehndi design" ,
-            "Bold  mehndi design" ,
-            "Indo  mehndi design" ,
-            "Floral  mehndi design" ,
-            "Rose  mehndi design" ,
-            "African   mehndi design" ,
-            "Butterfly mehndi design" ,
-            "Portrait   mehndi design" ,
-            "Hanging  mehndi design" ,
-            "Backhand Simple mehndi design" ,
+            "Select Subcategory" ,
+            "Arabic Mehndi Design" ,
+            "Bridal Mehndi Design" ,
+            "Indian Mehndi Design" ,
+            "Moroccan Mehndi Design" ,
+            "Bold Mehndi Design" ,
+            "Indo Mehndi Design" ,
+            "Floral Mehndi Design" ,
+            "Rose Mehndi Design" ,
+            "African Mehndi Design" ,
+            "Butterfly Mehndi Design" ,
+            "Portrait Mehndi Design" ,
+            "Hanging Mehndi Design" ,
+            "Backhand Simple Mehndi Design" ,
         )
 
         val actualCategory = listOf(
             "Arabic mehndi design" ,
             "Bridal  mehndi design" ,
-            "Indian  mehndi design" ,
-            "Moroccan  mehndi design" ,
-            "Bold  mehndi design" ,
+            "Indian Mehndi design" ,
+            "Moroccan Mehndi design" ,
+            "Bold Mehndi design" ,
             "Indo  mehndi design" ,
             "Floral  mehndi design" ,
             "Rose  mehndi design" ,
@@ -50,14 +46,10 @@ class Utils {
             "Backhand Simple mehndi design" ,
         )
         val data_list = listOf(
-            HomeData(R.drawable.newbg , "Mehandi Design" , false) ,
-            HomeData(R.drawable.mahendiv , "Mehandi Video" , true) ,
-            HomeData(R.drawable.nailart , "NailArt Design" , false) ,
-            HomeData(R.drawable.nailvideo , "NailArt Video" , true) ,
-            HomeData(R.drawable.hairstyle , "HairStyle Design" , false) ,
-            HomeData(R.drawable.hairstylevideo , "HairStyle Video" , true) ,
-            HomeData(R.drawable.makeup , "Makeup Design" , false) ,
-            HomeData(R.drawable.makeupvideo , "Makeup Video" , true) ,
+            HomeData(R.drawable.newbg , "Mehandi Design") ,
+            HomeData(R.drawable.nailart , "NailArt Design") ,
+            HomeData(R.drawable.hairstyle , "HairStyle Design") ,
+            HomeData(R.drawable.makeup , "Makeup Design") ,
         )
     }
 }

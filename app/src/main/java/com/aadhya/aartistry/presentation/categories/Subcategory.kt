@@ -14,6 +14,7 @@ class Subcategory : AppCompatActivity() {
     private lateinit var gridView: GridView
     private lateinit var dataList: List<CategoryData>
     private lateinit var binding: ActivitySubcategoryBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySubcategoryBinding.inflate(layoutInflater)
@@ -21,29 +22,29 @@ class Subcategory : AppCompatActivity() {
         getToolbar()
         gridView = binding.gridView
         dataList = listOf(
-            CategoryData(R.drawable.newbg , "Mehandi ") ,
-            CategoryData(R.drawable.mahendiv , "Radiant Blooms ") ,
-            CategoryData(R.drawable.nailart , "Ethereal Elegance ") ,
-            CategoryData(R.drawable.nailvideo , "Mystic Charms ") ,
-            CategoryData(R.drawable.nailvideo , "Enchanting Vines ") ,
-            CategoryData(R.drawable.hairstyle , "Mehandi ") ,
-            CategoryData(R.drawable.hairstylevideo , "Celestial Hues ") ,
-            CategoryData(R.drawable.makeup , "Whimsical Patterns ") ,
-            CategoryData(R.drawable.makeupvideo , "Timeless Grace ") ,
-            CategoryData(R.drawable.mahendiv , "Joyful Mandalas ") ,
-            CategoryData(R.drawable.nailart , "Serene Symmetry ") ,
-            CategoryData(R.drawable.nailvideo , "Cultural Treasures ") ,
-            CategoryData(R.drawable.hairstyle , "HennaWhisper Artistry ") ,
-            CategoryData(R.drawable.hairstylevideo , "Mehndi Magic Hub ") ,
+            CategoryData(R.drawable.newbg , "Arabic Mehndi Design") ,
+            CategoryData(R.drawable.mahendiv , "Bridal Mehndi Design") ,
+            CategoryData(R.drawable.nailart , "Indian Mehndi Design") ,
+            CategoryData(R.drawable.nailvideo , "Moroccan Mehndi Design") ,
+            CategoryData(R.drawable.hairstyle , "Bold Mehndi Design") ,
+            CategoryData(R.drawable.hairstylevideo , "Indo Mehndi Design") ,
+            CategoryData(R.drawable.makeup , "Floral Mehndi Design") ,
+            CategoryData(R.drawable.makeupvideo , "Rose Mehndi Design") ,
+            CategoryData(R.drawable.newbg , "African Mehndi Design") ,
+            CategoryData(R.drawable.mahendiv , "Butterfly Mehndi Design") ,
+            CategoryData(R.drawable.nailart , "Portrait Mehndi Design") ,
+            CategoryData(R.drawable.hairstyle , "Backhand Simple Mehndi Design") ,
+            CategoryData(R.drawable.hairstylevideo , "Hanging Mehndi Design") ,
         )
         val adapter = CategoryAdapter(dataList , this)
         gridView.adapter = adapter
-
+//        getFirebaseDataList()
         gridView.onItemClickListener = AdapterView.OnItemClickListener { _ , _ , position , _ ->
             Toast.makeText(applicationContext , dataList[position].cat_title , Toast.LENGTH_SHORT)
                 .show()
         }
     }
+
 
     private fun getToolbar() {
         val toolbarText = intent.getStringExtra("category").toString()

@@ -26,14 +26,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView = binding.recyclerView
         navigationDrawer()
         val data_list = listOf(
-            HomeData(R.drawable.newbg , "Mehandi Design" , false) ,
-            HomeData(R.drawable.mahendiv , "Mehandi Video" , true) ,
-            HomeData(R.drawable.nailart , "NailArt Design" , false) ,
-            HomeData(R.drawable.nailvideo , "NailArt Video" , true) ,
-            HomeData(R.drawable.hairstyle , "HairStyle Design" , false) ,
-            HomeData(R.drawable.hairstylevideo , "HairStyle Video" , true) ,
-            HomeData(R.drawable.makeup , "Makeup Design" , false) ,
-            HomeData(R.drawable.makeupvideo , "Makeup Video" , true) ,
+            HomeData(R.drawable.newbg , "Mehandi Design") ,
+            HomeData(R.drawable.nailart , "NailArt Design") ,
+            HomeData(R.drawable.hairstyle , "HairStyle Design") ,
+            HomeData(R.drawable.makeup , "Makeup Design") ,
         )
 
         recyclerView.layoutManager = LinearLayoutManager(this)

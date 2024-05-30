@@ -1,48 +1,74 @@
 package com.aadhya.aartistry.presentation.subcategory
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.AdapterView
-import android.widget.GridView
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.aadhya.aartistry.R
-import com.aadhya.aartistry.adapter.SubCatAdapter
-import com.aadhya.aartistry.data.modal.CategoryData
+import com.aadhya.aartistry.adapter.MehandiItemAdapter
+import com.aadhya.aartistry.data.modal.MehandiItem
 import com.aadhya.aartistry.databinding.ActivitySubCatBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class SubCat : AppCompatActivity() {
     private lateinit var binding: ActivitySubCatBinding
-    private lateinit var gridView: GridView
-    private lateinit var dataList: List<CategoryData>
+    private lateinit var recyclerView: RecyclerView
+    private val itemList = mutableListOf<MehandiItem>()
+    private lateinit var adapter: MehandiItemAdapter
+
+    var categoryname = ""
+    var sCategoryname = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySubCatBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getToolbar()
-        gridView = binding.gridViewSub
-        dataList = listOf(
-            CategoryData(R.drawable.newbg , "Mehandi1 ") ,
-            CategoryData(R.drawable.mahendiv , "Radiant Blooms11 ") ,
-            CategoryData(R.drawable.nailart , "Ethereal Elegance 1") ,
-            CategoryData(R.drawable.nailvideo , "Mystic Charms 1") ,
-            CategoryData(R.drawable.nailvideo , "Enchanting Vines 1") ,
-            CategoryData(R.drawable.hairstyle , "Mehandi1 ") ,
-            CategoryData(R.drawable.hairstylevideo , "Celestial Hues1 ") ,
-            CategoryData(R.drawable.makeup , "Whimsical Patterns 1") ,
-            CategoryData(R.drawable.makeupvideo , "Timeless Grace 1") ,
-            CategoryData(R.drawable.mahendiv , "Joyful Mandalas1 ") ,
-            CategoryData(R.drawable.nailart , "Serene Symmetry1 ") ,
-            CategoryData(R.drawable.nailvideo , "Cultural Treasures 1") ,
-            CategoryData(R.drawable.hairstyle , "HennaWhisper Artistry1 ") ,
-            CategoryData(R.drawable.hairstylevideo , "Mehndi Magic Hub 1") ,
-        )
-        val adapter = SubCatAdapter(dataList , this)
-        gridView.adapter = adapter
+        recyclerView = binding.gridViewSub
+        recyclerView.layoutManager = GridLayoutManager(this , 2)
+        adapter = MehandiItemAdapter(this , itemList)
+        recyclerView.adapter = adapter
 
-        gridView.onItemClickListener = AdapterView.OnItemClickListener { _ , _ , position , _ ->
-            Toast.makeText(applicationContext , dataList[position].cat_title , Toast.LENGTH_SHORT)
-                .show()
-        }
+        categoryname = intent.extras!!.getString("category" , "")
+        sCategoryname = intent.extras!!.getString("category" , "")
+        getFirebaseDataList()
+    }
+
+    private fun getFirebaseDataList() {
+//        val myRef = FirebaseDatabase.getInstance().getReference("images").child("subCategory").equals(categoryname)
+        val myRef = FirebaseDatabase.getInstance().getReference("images")
+
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataChange(snapshot: DataSnapshot) {
+                itemList.clear()
+                for (dataSnapshot in snapshot.children) {
+                    val item = dataSnapshot.getValue(MehandiItem::class.java)
+                    item?.let {
+                        if (it.subCategory?.trim() == categoryname.trim()) {
+                            itemList.add(it)
+//                            println("====222" + itemList)
+                        } else if (it.category?.trim() == sCategoryname) {
+                            itemList.add(it)
+                        } else {
+                            // TODO:
+                        }
+                    }
+                }
+                adapter.notifyDataSetChanged()
+                Log.d("FirebaseData" , "Items: $itemList")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("FirebaseError" , "Error: ${error.message}")
+            }
+        })
     }
 
     private fun getToolbar() {
