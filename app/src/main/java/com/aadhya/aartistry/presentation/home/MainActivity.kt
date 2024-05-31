@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aadhya.aartistry.R
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         val params = Toolbar.LayoutParams(
             Toolbar.LayoutParams.MATCH_PARENT , Toolbar.LayoutParams.WRAP_CONTENT
         )
+        window.statusBarColor = ContextCompat.getColor(this , R.color.dark)
         binding.toolbar.addView(customTitleView , params)
     }
 

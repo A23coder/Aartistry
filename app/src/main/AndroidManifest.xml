@@ -37,7 +37,7 @@
             android:name=".presentation.home.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.splash.Splash"
+            android:name=".presentation.admin.Admin"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -47,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.admin.Admin"
+            android:name=".presentation.splash.Splash"
             android:exported="false"
             android:label="Aadhya Mehandi"
             android:launchMode="singleTask" />

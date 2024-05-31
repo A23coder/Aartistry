@@ -12,16 +12,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.aadhya.aartistry.R
-import com.aadhya.aartistry.data.modal.HomeData
+import com.aadhya.aartistry.data.modal.MehandiItem
 import com.aadhya.aartistry.presentation.edit.EditPage
 import com.bumptech.glide.Glide
 
 
 class EditAdapter(
-    private var data: List<HomeData> ,
+    private var data: List<MehandiItem> ,
     var context: Context ,
-    var subCategory: String ,
-    var category: String ,
 ) : RecyclerView.Adapter<EditAdapter.MyViewViewHolder>() {
     class MyViewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cardImage: ImageView = itemView.findViewById(R.id.catImage)
@@ -40,25 +38,25 @@ class EditAdapter(
 
     override fun onBindViewHolder(holder: MyViewViewHolder , position: Int) {
         val item = data[position]
-        holder.cardName.text = item.title
+        holder.cardName.text = item.name
         Glide.with(holder.itemView)
-            .load(item.image)
+            .load(item.url)
             .into(holder.cardImage)
 
 
 
         holder.cateEdit.setOnClickListener {
             val intent = Intent(context , EditPage::class.java).apply {
-                putExtra("name" , item.title)
-                putExtra("image" , item.image)
-                putExtra("subCategory" , subCategory)
-                putExtra("category" , category)
+                putExtra("name" , item.name)
+                putExtra("image" , item.url)
+                putExtra("subCategory" , item.subCategory)
+                putExtra("category" , item.category)
             }
             context.startActivity(intent)
         }
         holder.cateDelete.setOnClickListener {
             val builder = AlertDialog.Builder(context)
-            builder.setMessage("Are you sure you want to Delete this ${item.title}?")
+            builder.setMessage("Are you sure you want to Delete this ${item.name}?")
             builder.setTitle("Delete Item!!")
             builder.setCancelable(true)
 
