@@ -1,8 +1,10 @@
 package com.aadhya.aartistry.adapter
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,11 +17,17 @@ import com.aadhya.aartistry.R
 import com.aadhya.aartistry.data.modal.MehandiItem
 import com.aadhya.aartistry.presentation.edit.EditPage
 import com.bumptech.glide.Glide
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class EditAdapter(
     private var data: List<MehandiItem> ,
     var context: Context ,
+    var myRef: DatabaseReference ,
 ) : RecyclerView.Adapter<EditAdapter.MyViewViewHolder>() {
     class MyViewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cardImage: ImageView = itemView.findViewById(R.id.catImage)
@@ -42,8 +50,8 @@ class EditAdapter(
         Glide.with(holder.itemView)
             .load(item.url)
             .into(holder.cardImage)
-
-
+        myRef = FirebaseDatabase.getInstance().reference.child("images")
+        val query = myRef.orderByChild("timestamp").equalTo(item.timestamp)
 
         holder.cateEdit.setOnClickListener {
             println("timestamp.... ${item.timestamp.toString()}")
@@ -62,11 +70,28 @@ class EditAdapter(
             builder.setTitle("Delete Item!!")
             builder.setCancelable(true)
 
-            builder.setPositiveButton("Yes" , object : DialogInterface.OnClickListener {
-                override fun onClick(dialog: DialogInterface? , which: Int) {
-                    Toast.makeText(context , "Sure......" , Toast.LENGTH_SHORT).show()
-                }
-            })
+            builder.setPositiveButton("Yes") { dialog, which ->
+                query.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.exists()) {
+                            for (appleSnapshot in snapshot.children) {
+                                appleSnapshot.ref.removeValue().addOnSuccessListener {
+                                    Toast.makeText(context, "${item.name} deleted successfully.", Toast.LENGTH_SHORT).show()
+                                }.addOnFailureListener { e ->
+                                    Toast.makeText(context, "Failed to delete: ${e.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        } else {
+                            Toast.makeText(context, "No record found with the given timestamp.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.e(TAG, "onCancelled", error.toException())
+                        Toast.makeText(context, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
             builder.setNegativeButton("No" , object : DialogInterface.OnClickListener {
                 override fun onClick(dialog: DialogInterface? , which: Int) {
                     dialog?.cancel()

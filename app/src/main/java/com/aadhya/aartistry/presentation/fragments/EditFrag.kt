@@ -19,6 +19,7 @@ import com.aadhya.aartistry.data.utils.Utils
 import com.aadhya.aartistry.databinding.LayoutEditFragmentBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
@@ -27,7 +28,7 @@ class EditFrag : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private val itemList = mutableListOf<MehandiItem>()
     private lateinit var adapter: EditAdapter
-
+    private lateinit var myRef: DatabaseReference
     var categoryname = ""
     var sCategoryname = ""
 
@@ -45,7 +46,8 @@ class EditFrag : Fragment() {
     ): View {
         _binding = LayoutEditFragmentBinding.inflate(inflater , container , false)
         recyclerView = _binding.editRecyclerView
-        adapter = EditAdapter(itemList , requireContext())
+        myRef = FirebaseDatabase.getInstance().reference.child("images")
+        adapter = EditAdapter(itemList , requireContext() , myRef)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
@@ -100,6 +102,9 @@ class EditFrag : Fragment() {
     }
 
     private fun initListeners() {
+
+
+
         _binding.mainCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*> , view: View? , position: Int , id: Long ,
