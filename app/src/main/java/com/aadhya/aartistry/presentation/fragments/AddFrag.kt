@@ -230,7 +230,7 @@ class AddFrag : Fragment() {
             "url" to imageUrl ,
             "name" to binding.edtName.text.toString() ,
             "category" to selectedCategory ,
-            "timestamp" to System.currentTimeMillis()
+            "timestamp" to System.currentTimeMillis().toString()
         )
         if (selectedCategory == "Mehandi Design") {
             imageDetails["subCategory"] = selectedSubCategory

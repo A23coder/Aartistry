@@ -46,11 +46,13 @@ class EditAdapter(
 
 
         holder.cateEdit.setOnClickListener {
+            println("timestamp.... ${item.timestamp.toString()}")
             val intent = Intent(context , EditPage::class.java).apply {
                 putExtra("name" , item.name)
                 putExtra("image" , item.url)
                 putExtra("subCategory" , item.subCategory)
                 putExtra("category" , item.category)
+                putExtra("time" , item.timestamp.toString())
             }
             context.startActivity(intent)
         }
