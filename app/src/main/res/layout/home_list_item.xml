@@ -21,6 +21,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center|end|top"
         android:layout_margin="10dp"
+        android:elevation="10dp"
         android:src="@drawable/ic_video"
         android:visibility="gone"
         app:tint="#80000000" />

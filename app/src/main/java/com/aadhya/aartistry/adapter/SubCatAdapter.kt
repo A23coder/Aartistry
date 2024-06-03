@@ -13,11 +13,10 @@ import com.aadhya.aartistry.data.modal.CategoryData
 import com.aadhya.aartistry.presentation.subcategory.SubCat
 import com.bumptech.glide.Glide
 
-class CategoryAdapter(
+class SubCatAdapter(
     private val dataList: List<CategoryData> ,
     private val context: Context ,
-
-    ) : BaseAdapter() {
+) : BaseAdapter() {
     private var layoutInflater: LayoutInflater? = null
     private lateinit var catTextView: TextView
     private lateinit var cateImageView: ImageView
@@ -41,23 +40,18 @@ class CategoryAdapter(
         }
 
         if (convertView == null) {
-            convertView = layoutInflater!!.inflate(R.layout.category_card_item , null)
+            convertView = layoutInflater!!.inflate(R.layout.sub_category_card_item , null)
         }
 
-        cateImageView = convertView!!.findViewById(R.id.cat_img)
-        catTextView = convertView.findViewById(R.id.cat_txt)
+        cateImageView = convertView!!.findViewById(R.id.sub_cat_img)
+        catTextView = convertView.findViewById(R.id.sub_cat_txt)
 
         catTextView.text = dataList[position].cat_title
         Glide.with(convertView)
             .load(dataList[position].cat_image)
             .override(600 , 500)
             .into(cateImageView)
-        convertView.setOnClickListener {
-            val intent = Intent(context , SubCat::class.java).apply {
-                putExtra("category" , dataList[position].cat_title)
-            }
-            context.startActivity(intent)
-        }
+
         return convertView
     }
 }

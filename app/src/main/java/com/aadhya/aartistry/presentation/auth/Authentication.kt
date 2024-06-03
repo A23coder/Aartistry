@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.aadhya.aartistry.databinding.ActivityAuthenticationBinding
 import com.aadhya.aartistry.presentation.home.MainActivity
+import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -22,7 +23,7 @@ class Authentication : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityAuthenticationBinding.inflate(layoutInflater)
         setContentView(_binding.root)
-//        FirebaseApp.initializeApp(this)
+        FirebaseApp.initializeApp(this)
 
         _binding.btnGetOtp.setOnClickListener {
             _binding.layoutEnterOtp.visibility = View.GONE
