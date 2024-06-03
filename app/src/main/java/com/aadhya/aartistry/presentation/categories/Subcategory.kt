@@ -9,6 +9,8 @@ import com.aadhya.aartistry.R
 import com.aadhya.aartistry.adapter.CategoryAdapter
 import com.aadhya.aartistry.data.modal.CategoryData
 import com.aadhya.aartistry.databinding.ActivitySubcategoryBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 
 class Subcategory : AppCompatActivity() {
     private lateinit var gridView: GridView
@@ -20,6 +22,7 @@ class Subcategory : AppCompatActivity() {
         binding = ActivitySubcategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getToolbar()
+        loadBanner()
         gridView = binding.gridView
         dataList = listOf(
             CategoryData(R.drawable.newbg , "Arabic Mehndi Design") ,
@@ -55,5 +58,14 @@ class Subcategory : AppCompatActivity() {
         binding.toolBarCategory.setNavigationOnClickListener {
             finish()
         }
+    }
+
+    //    ca-app-pub-6786932636090048/6765687813
+    private fun loadBanner() {
+        MobileAds.initialize(this)
+
+        val adRequest = AdRequest.Builder().build()
+
+        binding.adView.loadAd(adRequest)
     }
 }

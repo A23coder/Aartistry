@@ -42,8 +42,20 @@
         android:verticalSpacing="10dp"
         app:flow_horizontalGap="10dp"
         app:flow_verticalGap="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolBarCategory" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:adSize="MEDIUM_RECTANGLE"
+        app:adUnitId="ca-app-pub-6786932636090048/4575025783"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gridView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

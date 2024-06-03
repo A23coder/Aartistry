@@ -15,6 +15,8 @@ import com.aadhya.aartistry.R
 import com.aadhya.aartistry.adapter.HomeAdapter
 import com.aadhya.aartistry.data.modal.HomeData
 import com.aadhya.aartistry.databinding.ActivityMainBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        loadBanner()
+
         recyclerView = binding.recyclerView
         navigationDrawer()
         val data_list = listOf(
@@ -63,5 +67,15 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+
+
+    private fun loadBanner() {
+        MobileAds.initialize(this)
+
+        val adRequest = AdRequest.Builder().build()
+
+        binding.adView.loadAd(adRequest)
     }
 }

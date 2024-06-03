@@ -33,7 +33,6 @@ class SubCat : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this , 2)
         adapter = MehandiItemAdapter(this , itemList)
         recyclerView.adapter = adapter
-
         categoryname = intent.extras!!.getString("category" , "")
         sCategoryname = intent.extras!!.getString("category" , "")
         getFirebaseDataList()
