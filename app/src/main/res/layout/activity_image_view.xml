@@ -33,7 +33,6 @@
         android:id="@+id/imgImageView"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:scaleType="centerCrop"
         android:src="@drawable/adlogo"
         app:layout_constraintBottom_toTopOf="@+id/imgImageText"
         app:layout_constraintEnd_toEndOf="parent"
