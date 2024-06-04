@@ -31,18 +31,14 @@
         <activity
             android:name=".presentation.gallery.ImgView"
             android:exported="false" />
-        <activity
-            android:name=".presentation.edit.EditPage"
-            android:exported="false" />
+
         <activity
             android:name=".presentation.subcategory.SubCat"
             android:exported="false" />
         <activity
             android:name=".presentation.categories.Subcategory"
             android:exported="false" />
-        <activity
-            android:name=".presentation.auth.Authentication"
-            android:exported="false" />
+
         <activity
             android:name=".presentation.home.MainActivity"
             android:exported="false" />
@@ -56,11 +52,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".presentation.admin.Admin"
-            android:exported="false"
-            android:label="Aadhya Mehandi"
-            android:launchMode="singleTask" />
 
         <meta-data
             android:name="preloaded_fonts"
