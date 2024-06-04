@@ -21,7 +21,6 @@
             android:layout_height="175dp"
             android:layout_margin="20dp"
             android:padding="20dp"
-            android:src="@drawable/ic_paper"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -102,7 +101,6 @@
             android:layout_height="175dp"
             android:layout_margin="20dp"
             android:padding="20dp"
-            android:src="@drawable/otp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

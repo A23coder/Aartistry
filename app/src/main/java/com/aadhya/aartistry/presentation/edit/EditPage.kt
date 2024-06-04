@@ -65,7 +65,6 @@ class EditPage : AppCompatActivity() {
         val uriString: String? = intent.getStringExtra("image")
 
         if (uriString.isNullOrEmpty()) {
-            _binding.imgView.setImageResource(R.drawable.ic_upload)
         } else {
             val imageUri: Uri = Uri.parse(uriString)
             imgUri = uriString.toString()

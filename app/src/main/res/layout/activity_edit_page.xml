@@ -24,7 +24,6 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_upload"
             app:layout_constraintBottom_toTopOf="@+id/btn_upload_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -32,7 +32,7 @@ class Subcategory : AppCompatActivity() {
             CategoryData(R.drawable.hairstyle , "Bold Mehndi Design") ,
             CategoryData(R.drawable.hairstylevideo , "Indo Mehndi Design") ,
             CategoryData(R.drawable.makeup , "Floral Mehndi Design") ,
-            CategoryData(R.drawable.makeupvideo , "Rose Mehndi Design") ,
+            CategoryData(R.drawable.newbg , "Rose Mehndi Design") ,
             CategoryData(R.drawable.newbg , "African Mehndi Design") ,
             CategoryData(R.drawable.mahendiv , "Butterfly Mehndi Design") ,
             CategoryData(R.drawable.nailart , "Portrait Mehndi Design") ,

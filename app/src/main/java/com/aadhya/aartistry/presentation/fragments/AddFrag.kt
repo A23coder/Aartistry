@@ -250,7 +250,6 @@ class AddFrag : Fragment() {
 
     private fun clearForm() {
         binding.edtName.text.clear()
-        binding.imgAddView.setImageResource(R.drawable.ic_upload)
         binding.mainCategory.setSelection(0)
         binding.subCategory.setSelection(0)
         binding.subCategory.visibility = View.GONE
