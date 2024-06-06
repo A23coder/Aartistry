@@ -25,19 +25,20 @@ class Subcategory : AppCompatActivity() {
         loadBanner()
         gridView = binding.gridView
         dataList = listOf(
-            CategoryData(R.drawable.newbg , "Arabic Mehndi Design") ,
-            CategoryData(R.drawable.mahendiv , "Bridal Mehndi Design") ,
-            CategoryData(R.drawable.nailart , "Indian Mehndi Design") ,
-            CategoryData(R.drawable.nailvideo , "Moroccan Mehndi Design") ,
-            CategoryData(R.drawable.hairstyle , "Bold Mehndi Design") ,
-            CategoryData(R.drawable.hairstyle , "Indo Mehndi Design") ,
-            CategoryData(R.drawable.makeup , "Floral Mehndi Design") ,
-            CategoryData(R.drawable.newbg , "Rose Mehndi Design") ,
-            CategoryData(R.drawable.newbg , "African Mehndi Design") ,
-            CategoryData(R.drawable.mahendiv , "Butterfly Mehndi Design") ,
-            CategoryData(R.drawable.nailart , "Portrait Mehndi Design") ,
-            CategoryData(R.drawable.hairstyle , "Backhand Simple Mehndi Design") ,
-            CategoryData(R.drawable.hairstyle , "Hanging Mehndi Design") ,
+            CategoryData(R.drawable.arabic , "Arabic Mehndi Design") ,
+            CategoryData(R.drawable.bridal , "Bridal Mehndi Design") ,
+            CategoryData(R.drawable.indian , "Indian Mehndi Design") ,
+            CategoryData(R.drawable.morrocon , "Moroccan Mehndi Design") ,
+            CategoryData(R.drawable.bold , "Bold Mehndi Design") ,
+            CategoryData(R.drawable.indoarabic , "Indo Mehndi Design") ,
+            CategoryData(R.drawable.floaral , "Floral Mehndi Design") ,
+            CategoryData(R.drawable.rose , "Rose Mehndi Design") ,
+            CategoryData(R.drawable.african , "African Mehndi Design") ,
+            CategoryData(R.drawable.butterfly , "Butterfly Mehndi Design") ,
+            CategoryData(R.drawable.potrait , "Portrait Mehndi Design") ,
+            CategoryData(R.drawable.backhand , "Backhand Simple Mehndi Design") ,
+            CategoryData(R.drawable.hanging , "Hanging Mehndi Design") ,
+            CategoryData(R.drawable.babyshower , "BabyShower Mehndi Design") ,
         )
         val adapter = CategoryAdapter(dataList , this)
         gridView.adapter = adapter
