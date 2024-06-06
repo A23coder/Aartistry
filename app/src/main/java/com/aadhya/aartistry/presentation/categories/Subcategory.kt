@@ -30,14 +30,14 @@ class Subcategory : AppCompatActivity() {
             CategoryData(R.drawable.nailart , "Indian Mehndi Design") ,
             CategoryData(R.drawable.nailvideo , "Moroccan Mehndi Design") ,
             CategoryData(R.drawable.hairstyle , "Bold Mehndi Design") ,
-            CategoryData(R.drawable.hairstylevideo , "Indo Mehndi Design") ,
+            CategoryData(R.drawable.hairstyle , "Indo Mehndi Design") ,
             CategoryData(R.drawable.makeup , "Floral Mehndi Design") ,
             CategoryData(R.drawable.newbg , "Rose Mehndi Design") ,
             CategoryData(R.drawable.newbg , "African Mehndi Design") ,
             CategoryData(R.drawable.mahendiv , "Butterfly Mehndi Design") ,
             CategoryData(R.drawable.nailart , "Portrait Mehndi Design") ,
             CategoryData(R.drawable.hairstyle , "Backhand Simple Mehndi Design") ,
-            CategoryData(R.drawable.hairstylevideo , "Hanging Mehndi Design") ,
+            CategoryData(R.drawable.hairstyle , "Hanging Mehndi Design") ,
         )
         val adapter = CategoryAdapter(dataList , this)
         gridView.adapter = adapter
