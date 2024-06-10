@@ -16,7 +16,7 @@
         android:label="Aadhya Artistry"
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/Theme.HomeActivity"
         tools:targetApi="31">
         <property
             android:name="android.adservices.AD_SERVICES_CONFIG"

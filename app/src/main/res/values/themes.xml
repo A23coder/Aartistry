@@ -16,7 +16,9 @@
         <item name="cornerSize">50%</item>
     </style>
 
-    <style name="Theme.HomeActivity" parent="Base.Theme.HomeActivity" />
+    <style name="Theme.HomeActivity" parent="Base.Theme.HomeActivity">
+        <item name="colorPrimary">@color/color_primary</item>
+    </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/color_primary</item>
