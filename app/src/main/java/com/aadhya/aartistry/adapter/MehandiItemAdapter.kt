@@ -18,8 +18,8 @@ class MehandiItemAdapter(
     private val itemList: List<MehandiItem> ,
 ) : RecyclerView.Adapter<MehandiItemAdapter.MyViewHolder>() {
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTextView: TextView = itemView.findViewById(R.id.mNameTxt)
-        val imageView: ImageView = itemView.findViewById(R.id.mImageView)
+        val nameTextView: TextView = itemView.findViewById(R.id.sub_cat_txt)
+        val imageView: ImageView = itemView.findViewById(R.id.sub_cat_img)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup , viewType: Int): MyViewHolder {
