@@ -18,6 +18,8 @@
 
     <style name="Theme.HomeActivity" parent="Base.Theme.HomeActivity">
         <item name="colorPrimary">@color/color_primary</item>
+        <item name="android:statusBarColor">@color/dark</item>
+
     </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light">
